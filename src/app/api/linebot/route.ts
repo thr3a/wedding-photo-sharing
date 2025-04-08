@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import fsSync from 'node:fs';
 import fsPromises from 'node:fs/promises';
 import path from 'node:path';
