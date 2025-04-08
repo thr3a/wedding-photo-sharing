@@ -7,7 +7,7 @@ image: thr3a/wedding-photo-sharing
 # Deploy to these servers.
 servers:
   web:
-    - wed.turai.work
+    - 35.213.88.23
   # job:
   #   hosts:
   #     - 192.168.0.1
