@@ -1,13 +1,15 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { NextResponse } from 'next/server';
-import { UPLOAD_DIR_BASE } from '../linebot/route';
 
 // Define directory paths relative to the project root
 // const UPLOADS_DIR = path.join(process.cwd(), 'uploads');
-const BEFORE_DIR = path.join(UPLOAD_DIR_BASE, 'before');
-const DISPLAYING_DIR = path.join(UPLOAD_DIR_BASE, 'displaying');
-const DONE_DIR = path.join(UPLOAD_DIR_BASE, 'done');
+// const BEFORE_DIR = path.join(UPLOAD_DIR_BASE, 'before');
+// const DISPLAYING_DIR = path.join(UPLOAD_DIR_BASE, 'displaying');
+// const DONE_DIR = path.join(UPLOAD_DIR_BASE, 'done');
+const BEFORE_DIR = '/tmp/uploads/before';
+const DISPLAYING_DIR = '/tmp/uploads/displaying';
+const DONE_DIR = '/tmp/uploads/done';
 
 async function findOldestJpg(dir: string): Promise<{ name: string; path: string; birthtimeMs: number } | null> {
   try {
