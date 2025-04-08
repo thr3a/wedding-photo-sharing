@@ -1,13 +1,13 @@
 # Name of your application. Used to uniquely configure containers.
-service: my-app
+service: wedding-photo-sharing
 
 # Name of the container image.
-image: my-user/my-app
+image: thr3a/wedding-photo-sharing
 
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - wed.turai.work
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -18,16 +18,24 @@ servers:
 #
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
-  ssl: true
-  host: app.example.com
+  ssl: false
+  host: wed.turai.work
   # Proxy connects to your container on port 80 by default.
-  # app_port: 3000
+  app_port: 3000
+  healthcheck:
+    path: /api/health
+    interval: 20
+    timeout: 3
+  # buffering:
+  #   responses: false
+  #   requests: false
+  #   responses: true
 
 # Credentials for your image host.
 registry:
   # Specify the registry server, if you're not using Docker Hub
   # server: registry.digitalocean.com / ghcr.io / ...
-  username: my-user
+  username: thr3a
 
   # Always use an access token rather than real password (pulled from .kamal/secrets).
   password:
@@ -41,12 +49,10 @@ builder:
   #   RUBY_VERSION: <%= File.read('.ruby-version').strip %>
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 #
-# env:
-#   clear:
-#     DB_HOST: 192.168.0.2
-#   secret:
-#     - RAILS_MASTER_KEY
-
+env:
+  secret:
+    - LINE_CHANNEL_ACCESS_TOKEN
+    - LINE_CHANNEL_SECRET
 # Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
 # "bin/kamal logs -r job" will tail logs from the first server in the job section.
 #
@@ -55,9 +61,8 @@ builder:
 
 # Use a different ssh user than root
 #
-# ssh:
-#   user: app
-
+ssh:
+  user: thr3a
 # Use a persistent storage volume.
 #
 # volumes:
