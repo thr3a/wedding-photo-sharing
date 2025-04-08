@@ -1,0 +1,3 @@
+- Nodejs v22 es2022
+- Typescript
+- next app router
