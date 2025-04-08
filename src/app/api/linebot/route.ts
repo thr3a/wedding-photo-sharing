@@ -11,8 +11,9 @@ const lineConfig = {
   channelSecret: process.env.LINE_CHANNEL_SECRET || 'dummy'
 };
 
-// const UPLOAD_DIR = path.join(process.cwd(), 'uploads', 'before');
-export const UPLOAD_DIR = '/tmp/uploads/before';
+// export const UPLOAD_DIR_BASE = process.cwd();
+export const UPLOAD_DIR_BASE = '/tmp/uploads';
+const UPLOAD_DIR = path.join(UPLOAD_DIR_BASE, 'before');
 
 const client = new line.Client(lineConfig);
 
