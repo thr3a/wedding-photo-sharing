@@ -12,7 +12,7 @@ const lineConfig = {
 };
 
 // const UPLOAD_DIR = path.join(process.cwd(), 'uploads', 'before');
-const UPLOAD_DIR = '/tmp/uploads/before';
+export const UPLOAD_DIR = '/tmp/uploads/before';
 
 const client = new line.Client(lineConfig);
 
