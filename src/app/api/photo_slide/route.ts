@@ -63,7 +63,7 @@ async function findOldestJpg(dir: string): Promise<{ name: string; path: string;
   }
 }
 
-export async function GET(request: Request) {
+export async function POST(request: Request) {
   try {
     // --- Step 1: Find the oldest image in 'before' ---
     const oldestBeforeFile = await findOldestJpg(BEFORE_DIR);
