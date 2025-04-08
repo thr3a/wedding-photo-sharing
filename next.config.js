@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compiler: {
+    removeConsole: false
+  },
   reactStrictMode: true,
   swcMinify: true,
   // basePath: process.env.GITHUB_ACTIONS && 'nextjs-template',
