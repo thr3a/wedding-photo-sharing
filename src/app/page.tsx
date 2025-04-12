@@ -4,7 +4,7 @@ import { Box, Center, Loader, Text } from '@mantine/core';
 import { useEffect, useRef, useState } from 'react';
 
 const IMAGE_API_URL = '/api/photo_slide/';
-const REFRESH_INTERVAL_MS = 30 * 1000;
+const REFRESH_INTERVAL_MS = 15 * 1000;
 const FETCH_TIMEOUT_MS = 10000;
 
 export default function WeddingPage() {
@@ -210,9 +210,7 @@ export default function WeddingPage() {
           // img要素自体の読み込みエラーハンドリング (ネットワークエラー以外でBlob URLが無効になった場合など)
           onError={(e) => {
             console.error('img要素での画像読み込みエラー:', imageUrl, e);
-            setError(
-              `画像の表示に失敗しました。URLが無効か破損している可能性があります。(${new Date().toLocaleTimeString()})`
-            );
+            setError(`画像の表示に失敗しました。URLが無効か破損している可能性があります。(${new Date().toLocaleTimeString()})`);
             // エラーが発生した場合、現在のimageUrlをクリアするなどの対策も可能
             setImageUrl(null);
             if (previousImageUrlRef.current === imageUrl) {
